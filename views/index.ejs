@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora - Clebson Araújo</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2 class="text-center mt-3"><%=title%></h2>
+        </div>
+        <div class="calculator">
+        <div class="display">
+            <label id="op" for=""></label>
+            <input type="text" value=" " disabled name="" id="display">
+        </div>
+        <div class="keyboard">
+            <input type="button" name="ac" value="AC" class="btn-ac">
+            <input type="button" name="div" value="/" class="btn-orange">
+            <input type="button" name="btn" value="7">
+            <input type="button" name="btn" value="8">
+            <input type="button" name="btn" value="9">
+            <input type="button" name="mult" value="X" class="btn-orange">
+            <input type="button" name="btn" value="4" >
+            <input type="button" name="btn" value="5">
+            <input type="button" name="btn" value="6">
+            <input type="button" name="sub" value="-" class="btn-orange">
+            <input type="button" name="btn" value="1">
+            <input type="button" name="btn" value="2">
+            <input type="button" name="btn" value="3">
+            <input type="button" name="sum" value="+" class="btn-orange">
+            <input type="button" name="btn" value="0" class="btn-zero">
+            <input type="button" name="btn" value=".">
+            <input type="button" name="equal"value="=" class="btn-orange">
+        </div>
+        
+    </div>
+    <div class="footer">
+        <p>Desenvolvido por Clebson Araújo</p>
+    </div>
+    </div>
+    
+    <script>
+        $(function(){
+
+            var v1, v2, op
+            $('input[name=btn]').click(function(){
+                $('#display').val($('#display').val() + $(this).val())
+            })
+
+            $('input[name=ac]').click(function(){
+                $('#display').val(' ')
+                $('#op').text(' ')
+            })
+
+            $('input[name=sum]').click(function(){
+                if($('#display').val != ' '){
+                    v1 = parseFloat($('#display').val())
+                    $('#display').val(' ')
+                    op = 'sum'
+                    $('#op').text($(this).val())
+                } else{
+                    alert('Insira um valor')
+                }
+            })
+
+            $('input[name=sub]').click(function(){
+                if($('#display').val != ' '){
+                    v1 = parseFloat($('#display').val())
+                    $('#display').val(' ')
+                    op = 'sub'
+                    $('#op').text($(this).val())
+                } else{
+                    alert('Insira um valor')
+                }
+            })
+
+            $('input[name=mult]').click(function(){
+                if($('#display').val != ' '){
+                    v1 = parseFloat($('#display').val())
+                    $('#display').val(' ')
+                    op = 'mult'
+                    $('#op').text($(this).val())
+                } else{
+                    alert('Insira um valor')
+                }
+            })
+
+            $('input[name=div]').click(function(){
+                if($('#display').val != ' '){
+                    v1 = parseFloat($('#display').val())
+                    $('#display').val(' ')
+                    op = 'div'
+                    $('#op').text($(this).val())
+                } else{
+                    alert('Insira um valor')
+                }
+            })
+
+            $('input[name=equal]').click(function(){
+                if($('#display').val != ' '){
+                    v2 = parseFloat($('#display').val())
+                    if(op == 'sum'){
+                        $('#display').val(v1 + v2)
+                    } else if(op == 'sub'){
+                        $('#display').val(v1 - v2)
+                    } else if(op == 'mult'){
+                        $('#display').val(v1 * v2)
+                    } else if(op == 'div'){
+                        $('#display').val(v1 / v2)
+                    }
+                } else{
+                    alert('Insira um valor')
+                }
+            })
+        })
+    </script>
+</body>
+</html>
